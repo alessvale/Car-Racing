@@ -1,3 +1,6 @@
+
+## Script used to train the agent 
+
 import pickle
 import gzip
 import numpy as np

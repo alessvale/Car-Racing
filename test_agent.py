@@ -1,3 +1,6 @@
+
+## Script used to test the agent performance
+
 import sys
 import math
 import numpy as np
@@ -17,6 +20,7 @@ import pyglet
 from agent import Agent
 
 ## Store results for stats
+
 import pickle
 import os
 import json
@@ -629,7 +633,7 @@ if __name__ == "__main__":
     isopen = True
     
     ## Episode loop##
-    EP_MAX = 15
+    
     episode = 0 
     
     ## Load agent
@@ -655,9 +659,9 @@ if __name__ == "__main__":
         
         while True:
             
-            a = agent.get_action(state)
+            agent_action = agent.get_action(state)
             
-            next_state, r, done, info = env.step(a)
+            next_state, r, done, info = env.step(agent_action)
             total_reward += r
             
             state = next_state
@@ -667,13 +671,13 @@ if __name__ == "__main__":
             
             if steps % 1000 == 0 or done:
                 
-                print("\naction " + str(["{:+0.2f}".format(x) for x in a]))
+                print("\naction " + str(["{:+0.2f}".format(x) for x in agent_action]))
                 print("step {} total_reward {:+0.2f}".format(steps, total_reward))
             
             
             isopen = env.render()
             if done or restart or isopen == False:
-                #save_results(rewards, episode,  "./results_test_3")
+                #save_results(rewards, episode,  "./results_test")
                 break
                 
         

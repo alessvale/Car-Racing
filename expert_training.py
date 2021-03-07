@@ -1,3 +1,7 @@
+
+## Script used to collect trajectories from a playing expert
+
+
 import sys
 import math
 import numpy as np
@@ -651,7 +655,7 @@ if __name__ == "__main__":
             total_reward += r
             
             samples["state"].append(state)            
-            samples["action"].append(np.array(a[:3]))    
+            samples["action"].append(np.array(a))    
             samples["next_state"].append(next_state)
             samples["reward"].append(r)
             samples["terminal"].append(done)
